@@ -27,7 +27,16 @@ Route::middleware('checklogin')->group(function () {
     Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('userEdit');
     Route::post('user/update/{id}', [UserController::class, 'update'])->name('userUpdate');
     Route::delete('user/delete/{id}', [UserController::class, 'delete'])->name('userDelete');
+    Route::get('user/excel', [UserController::class, 'excel'])->name('userExcel');
+    Route::get('user/pdf', [UserController::class, 'pdf'])->name('userPdf');
     
     # Tugas
     Route::get('tugas', [TugasController::class, 'index'])->name('tugas');
+    Route::get('tugas/create', [TugasController::class, 'create'])->name('tugasCreate');
+    Route::post('tugas/store', [TugasController::class, 'store'])->name('tugasStore');
+    Route::get('tugas/edit/{id}', [TugasController::class, 'edit'])->name('tugasEdit');
+    Route::post('tugas/update/{id}', [TugasController::class, 'update'])->name('tugasUpdate');
+    Route::delete('tugas/delete/{id}', [TugasController::class, 'delete'])->name('tugasDelete');
+    Route::get('tugas/excel', [TugasController::class, 'excel'])->name('tugasExcel');
+    Route::get('tugas/pdf', [TugasController::class, 'pdf'])->name('tugasPdf');
 });

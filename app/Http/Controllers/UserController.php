@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Exports\UserExport;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -108,5 +111,24 @@ class UserController extends Controller
     {
         User::findOrFail($id)->delete();
         return redirect()->route('user')->with('success', 'User berhasil dihapus');
+    }
+
+    public function excel()
+    {
+        $filename = now()->format('d-m-Y H.i.s');
+        return Excel::download(new UserExport, 'DataUser_'.$filename.'.xlsx');
+    }
+
+    public function pdf()
+    {
+        $filename = now()->format('d-m-Y_H.i.s');
+        $data = [
+            'user' => User::orderBy('jabatan', 'asc')->get(),
+            'date' => date('Y-m-d'),
+        ];
+        
+        $pdf = Pdf::loadView('admin/user/pdf', $data);
+        return $pdf->setPaper('a4', 'landscape')->stream('DataUser_'.$filename.'.pdf');
+
     }
 }

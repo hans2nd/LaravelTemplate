@@ -15,11 +15,11 @@
                 </a>
             </div>
             <div>
-                <a href="#" class="btn btn-success">
+                <a href="{{ route('userExcel') }}" class="btn btn-success">
                     <i class="fas fa-file-excel mr-2"></i>
                     Excel
                 </a>
-                <a href="#" class="btn btn-danger">
+                <a href="{{ route('userPdf') }}" class="btn btn-danger" target="_blank">
                     <i class="fas fa-file-pdf mr-2"></i>
                     PDF
                 </a>
@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead class="bg-primary text-white">
                             <tr class="text-center">
                                 <th>No</th>
