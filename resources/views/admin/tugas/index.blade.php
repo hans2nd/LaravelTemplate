@@ -19,7 +19,7 @@
                     <i class="fas fa-file-excel mr-2"></i>
                     Excel
                 </a>
-                <a href="#" class="btn btn-danger">
+                <a href="{{ route('tugasPdf') }}" class="btn btn-danger">
                     <i class="fas fa-file-pdf mr-2"></i>
                     PDF
                 </a>
