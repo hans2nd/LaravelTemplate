@@ -29,13 +29,6 @@
     <!-- Main CSS File -->
     <link href="{{ asset('enno/assets/css/main.css') }}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: eNno
-  * Template URL: https://bootstrapmade.com/enno-free-simple-bootstrap-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -58,7 +51,11 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="{{ route('login') }}">Login</a>
+            @auth
+                <a class="btn-getstarted" href="{{ route('home') }}">Dashboard</a>
+            @else
+                <a class="btn-getstarted" href="{{ route('login') }}">Login</a>
+            @endauth
 
         </div>
     </header>
@@ -75,8 +72,11 @@
                         <h1>M-Tugas</h1>
                         <p>Aplikasi management tugas</p>
                         <div class="d-flex">
-                            <a href="#about" class="btn-get-started">login</a>
-
+                            @auth
+                                <a href="{{ route('home') }}" class="btn-get-started">Dashboard</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn-get-started">login</a>
+                            @endauth
                         </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">

@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('welcome') }}">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-tasks"></i>
                 </div>
@@ -19,43 +19,40 @@
                     <span>Dashboard</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                MENU ADMIN
-            </div>
-
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item {{ $menuAdminUser ?? '' }}">
-                <a class="nav-link" href="{{ route('user') }}">
-                    <i class="fas fa-user-alt"></i>
-                    <span>Users</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item {{ $menuAdminTugas ?? '' }}">
-                <a class="nav-link" href="{{ route('tugas') }}">
-                    <i class="fas fa-tasks"></i>
-                    <span>Tugas</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                MENU KARYAWAN
-            </div>
+            @if (auth()->user()->jabatan == 'Admin')
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    MENU ADMIN
+                </div>
+                <!-- Nav Item - Charts -->
+                <li class="nav-item {{ $menuAdminUser ?? '' }}">
+                    <a class="nav-link" href="{{ route('user') }}">
+                        <i class="fas fa-user-alt"></i>
+                        <span>Users</span></a>
+                </li>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item {{ $menuAdminTugas ?? '' }}">
+                    <a class="nav-link" href="{{ route('tugas') }}">
+                        <i class="fas fa-tasks"></i>
+                        <span>Tugas</span></a>
+                </li>
+            @else
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    MENU KARYAWAN
+                </div>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-tasks"></i>
-                    <span>Tugas</span></a>
-            </li>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item {{ $menuKaryawanTugas ?? '' }}">
+                    <a class="nav-link" href="{{ route('tugas') }}">
+                        <i class="fas fa-tasks"></i>
+                        <span>Tugas</span></a>
+                </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
