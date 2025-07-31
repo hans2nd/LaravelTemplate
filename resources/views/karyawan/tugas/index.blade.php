@@ -76,7 +76,11 @@
                 </div>
             @else
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
+                        Status
+                    </div>
+                    <div class="col-6">
+                        :
                         <span class="badge badge-danger badge-pill text-white">
                             <i class="fas fa-exclamation-triangle mr-2"></i>
                             Tugas belum ditugaskan
